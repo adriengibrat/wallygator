@@ -1,0 +1,55 @@
+{
+  "name": "wallygator",
+  "version": "0.0.1",
+  "description": "Validation made simple & fun",
+  "main": "dist/walligator.js",
+  "module": "dist/walligator.mjs",
+  "browser": "dist/walligator.umd.js",
+  "browser:min": "dist/walligator.umd.min.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "scripts": {
+    "start": "jest --watch --notify",
+    "prebuild": "rm --recursive --force dist",
+    "build": "microbundle --compress false",
+    "postbuild": "uglifyjs --compress --mangle --output $npm_package_browser_min -- $npm_package_browser",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "keywords": [
+    "validation",
+    "validator"
+  ],
+  "author": "Adrien Gibrat <adrien.gibrat@gmail.com>",
+  "license": "WTFPL",
+  "dependencies": {
+    "ts-custom-error": "^2.2.1"
+  },
+  "devDependencies": {
+  "@types/jest": "^23.0.0",
+  "typescript": "^2.9.2",
+  "jest": "^22.4.3",
+  "jest-tap-reporter": "^1.9.0",
+  "microbundle": "^0.4.4",
+  "tap-notify": "^1.0.0",
+  "ts-jest": "^23.0.0"
+  },
+  "jest": {
+    "reporters": [
+      "jest-tap-reporter"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "\\.spec\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    }
+  }
+}
